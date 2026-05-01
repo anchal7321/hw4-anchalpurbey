@@ -101,6 +101,23 @@ The `business-memo-formatter` skill:
 
 ---
 
+## Commit History
+
+| Hash | Description |
+|---|---|
+| `507715c` | Add outputs folder and pycache from skill test runs |
+| `57328c1` | Improve format_memo.py: alias support and unlabeled text preservation |
+| `006365b` | Update live_demo_memo.txt with labeled section structure for formatter |
+| `b25a93f` | Add live_demo_memo.txt as fourth test input for skill demonstration |
+| `fb84828` | Add memo_structure_guide.md and memo_template_example.txt as skill references |
+| `02acbd8` | Add README.md for HW5 business-memo-formatter skill |
+| `3d084d9` | Add test_inputs folder with three memo test cases |
+| `873a599` | Add format_memo.py — core Python script for business-memo-formatter skill |
+| `13e0d46` | Write SKILL.md for business-memo-formatter skill |
+| `cb7ecb4` | Add business-memo-formatter skill folder structure |
+
+---
+
 ## Walkthrough video
 
 Video link: PASTE YOUR VIDEO LINK HERE
