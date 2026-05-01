@@ -1,0 +1,27 @@
+Title: [Enter a short descriptive title for your memo]
+
+To: [Recipient name, role, or committee]
+
+From: [Your name and role]
+
+Date: [Month Day, Year]
+
+Subject: [One-line statement of what this memo addresses]
+
+Recommendation:
+[State your primary recommendation clearly. What action or decision are you advocating for? Keep this concise and direct.]
+
+Analysis:
+[Provide your supporting argument, evidence, and reasoning here. You may use bullet points for key findings:
+- Finding one
+- Finding two
+- Finding three
+Expand each point with context and data as needed.]
+
+Risks:
+[Identify potential downsides, challenges, or uncertainties associated with your recommendation. This section is optional but strengthens the memo.
+- Risk one
+- Risk two]
+
+Conclusion:
+[Summarize the key takeaway. Tie the analysis back to the recommendation without introducing new information. Keep it to two or three sentences.]
