@@ -32,6 +32,17 @@ KNOWN_FIELDS = [
     "recommendation", "analysis", "risks", "conclusion"
 ]
 
+# Header fields capture only the inline value on the same line as the label.
+# Any following unlabeled lines are sent to additional_notes, not appended here.
+HEADER_FIELDS = {"title", "to", "from", "date", "subject"}
+
+# Aliases map alternative labels to a canonical KNOWN_FIELDS key.
+# Keys and values are lowercase. Checked before KNOWN_FIELDS during parsing.
+FIELD_ALIASES = {
+    "re": "subject",
+    "regarding": "subject",
+}
+
 REQUIRED_FIELDS = ["title", "to", "from", "date", "subject", "recommendation", "analysis", "conclusion"]
 OPTIONAL_FIELDS = ["risks"]
 
@@ -43,7 +54,12 @@ def parse_memo(text: str) -> dict:
     """
     Parse labeled memo fields from the input text.
     Fields are detected case-insensitively.
-    Any text not under a known label goes into 'additional_notes'.
+
+    Alias resolution: 'Re:' and 'Regarding:' are treated as 'Subject:'.
+
+    Any text that appears without a recognized label — whether before the first
+    field, between fields, or after the last field — is collected into
+    'additional_notes' so that no content is silently dropped.
     """
     sections = {field: "" for field in KNOWN_FIELDS}
     sections["additional_notes"] = ""
@@ -52,22 +68,41 @@ def parse_memo(text: str) -> dict:
     buffer = []
     unlabeled_buffer = []
 
+    # Build a combined lookup: aliases + known fields, all lowercase
+    # Each entry maps a label string to its canonical field key.
+    all_labels = {}
+    for alias, canonical in FIELD_ALIASES.items():
+        all_labels[alias] = canonical
+    for field in KNOWN_FIELDS:
+        all_labels[field] = field
+
     lines = text.splitlines()
 
     for line in lines:
         matched = False
-        for field in KNOWN_FIELDS:
-            pattern = re.compile(rf"^\s*{field}\s*:\s*(.*)", re.IGNORECASE)
+        for label, field in all_labels.items():
+            pattern = re.compile(rf"^\s*{re.escape(label)}\s*:\s*(.*)", re.IGNORECASE)
             match = pattern.match(line)
             if match:
-                # Save previous buffer
+                # Flush previous buffer before switching fields
                 if current_field:
-                    sections[current_field] += "\n".join(buffer).strip()
-                elif buffer:
+                    existing = sections[current_field]
+                    addition = "\n".join(buffer).strip()
+                    sections[current_field] = (existing + "\n" + addition).strip() if existing else addition
+                else:
+                    # Unlabeled text before the first recognized field
                     unlabeled_buffer.extend(buffer)
                 # Start new field
                 current_field = field
-                buffer = [match.group(1).strip()]
+                inline_value = match.group(1).strip()
+                if field in HEADER_FIELDS:
+                    # Header fields: capture inline value only; reset buffer to empty
+                    # so any following unlabeled lines go to unlabeled_buffer, not here.
+                    sections[current_field] = inline_value
+                    current_field = None
+                    buffer = []
+                else:
+                    buffer = [inline_value]
                 matched = True
                 break
 
@@ -79,7 +114,11 @@ def parse_memo(text: str) -> dict:
 
     # Flush final buffer
     if current_field:
-        sections[current_field] += "\n".join(buffer).strip()
+        existing = sections[current_field]
+        addition = "\n".join(buffer).strip()
+        sections[current_field] = (existing + "\n" + addition).strip() if existing else addition
+
+    # Collect all unlabeled text into additional_notes
     if unlabeled_buffer:
         sections["additional_notes"] = "\n".join(unlabeled_buffer).strip()
 
@@ -291,6 +330,8 @@ def create_report(
         "- Memo header table with bold labels (To, From, Date, Subject)",
         "- Bold section headings (Recommendation, Analysis, Risks, Conclusion)",
         "- Bullet point conversion for lines starting with '- ' or '* '",
+        "- 'Re:' and 'Regarding:' treated as equivalent to 'Subject:'",
+        "- Unlabeled body text preserved under Additional Notes",
         "- Original content and meaning preserved",
         "",
         "## Limitations",
