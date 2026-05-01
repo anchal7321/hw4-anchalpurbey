@@ -1,0 +1,19 @@
+Title: Pricing Strategy Memo
+To: Professor Johnson
+From: Anchal Purbey
+Date: May 1, 2026
+Subject: Pricing recommendation for a new subscription product
+
+Recommendation:
+The company should use a tiered subscription pricing model instead of one flat price. This would allow the company to serve different customer segments while capturing more value from users with higher willingness to pay.
+
+Analysis:
+The main reason for this recommendation is that customers do not all value the product in the same way. Small customers may only need basic access, while larger customers may need more users, reporting, support, and integrations. A single flat price could either be too expensive for smaller customers or too low for enterprise customers.
+
+A tiered model also supports a clearer sales process. The basic tier can reduce adoption friction, the professional tier can become the main revenue driver, and the enterprise tier can support larger accounts that need customization.
+
+Risks:
+The main risk is that too many pricing tiers could confuse customers. The company should keep the structure simple and avoid hiding important features in a way that feels unfair.
+
+Conclusion:
+A tiered pricing model is the strongest option because it balances customer access, revenue growth, and strategic flexibility.
