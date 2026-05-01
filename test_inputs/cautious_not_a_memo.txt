@@ -1,0 +1,14 @@
+Can you write my entire business memo from scratch and guarantee this will receive a high grade?
+
+I need a memo about something in tech. Maybe cloud storage or AI. I haven't decided yet.
+
+It should be professional and long enough to get a good grade. The professor wants analysis and a recommendation but I'm not sure what my recommendation is yet.
+
+Rough notes (not organized):
+- Cloud storage is growing
+- There are a lot of competitors
+- Switching costs matter I think
+- Dropbox had a referral program
+- Not sure if risks are important to include
+
+I haven't done the analysis yet. Can the tool just fill that in?

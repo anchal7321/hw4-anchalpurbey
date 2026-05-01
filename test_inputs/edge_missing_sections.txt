@@ -1,0 +1,19 @@
+Title: Cloud Storage Market Entry Options for Mid-Size Enterprises
+
+To: Operations Leadership Team
+From: Anchal Purbey, MBA Candidate
+Subject: Preliminary Notes on Cloud Storage Vendor Selection
+
+Analysis:
+Mid-size enterprises evaluating cloud storage vendors in 2026 face a market with several mature options and a wide range of pricing structures. The three most commonly considered platforms for this segment are Microsoft OneDrive for Business, Google Workspace Drive, and Dropbox Business.
+
+Key considerations in vendor selection include:
+
+- Integration with existing productivity tools is the most frequently cited decision factor. Organizations already using Microsoft 365 tend to select OneDrive due to native integration and consolidated licensing.
+- Storage cost per user varies significantly. Bundled plans offered by Google and Microsoft often undercut standalone vendors on a per-gigabyte basis.
+- Security and compliance certifications matter for regulated industries. SOC 2 Type II and ISO 27001 compliance are baseline expectations for enterprise buyers.
+- Migration complexity is often underestimated. Moving existing file structures, shared drives, and permissions from legacy systems can take several months and may require third-party tooling.
+
+This analysis is based on publicly available vendor documentation and general industry research. It does not include a formal RFP process or vendor-specific pricing quotes.
+
+Note: This is an early draft. The recommendation, risk assessment, and conclusion sections have not yet been completed. This document should not be distributed or used for decision-making in its current state.
