@@ -120,7 +120,7 @@ The `business-memo-formatter` skill:
 
 ## Walkthrough video
 
-Video link: PASTE YOUR VIDEO LINK HERE
+Video link: https://youtu.be/y-hNFi2LsXs
 
 ---
 
